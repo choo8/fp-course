@@ -14,8 +14,7 @@ fastAnagrams ::
   Chars
   -> FilePath
   -> IO (List Chars)
-fastAnagrams =
-  error "todo: Course.FastAnagrams#fastAnagrams"
+fastAnagrams s fp = (flip (filter . flip S.member) (permutations s) . S.fromList . hlist . lines) <$> readFile fp
 
 newtype NoCaseString =
   NoCaseString {
